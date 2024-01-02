@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-eT53ZyWuVVN0v2q4vR3RO/RSU5MgWzzD0Vd8ePzE2nUqOjpjBr8cQh93R8RW8Vq" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="logo.png" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111727;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #36e2ec;
+            font-family: "Ubuntu", sans-serif;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            font-weight: bolder;
+            font-size: 1.5rem;
+            color: #36e2ec;
+        }
+
+        .brand img {
+            width: 100px;
+            padding: 0 8px;
+        }
+
+        .profile-container {
+            background-color: #090f1f;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            margin-left: 148px;
+            height: 1000px;
+            border: 3px solid#36e2ec;
+            background-image: url(bg.jpg);
+            background-size: cover;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 5px solid #36e2ec;
+        }
+
+        .user-profile {
+            left: 200px;
+        }
+
+        .user-details {
+            text-align: left;
+            margin-bottom: 20px;
+            color: white;
+            font-size: large;
+        }
+
+        .user-details p {
+            margin: 8px 0;
+        }
+
+        .user-details strong {
+            font-weight: bold;
+            margin-right: 5px;
+            color: white;
+        }
+
+        .user-details i {
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #111727;
+            color: #36e2ec;
+            border: 5px solid #36e2ec;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #111727;
+            color: #36e2ec;
+            border: 3px solid #36e2ec;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #B6BBC4;
+        }
+
+        nav {
+            font-family: "Ubuntu", sans-serif;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+            list-style-type: none;
+            height: 69px;
+            background-color: #090f1f;
+            border: 3px solid #36e2ec;
+            border-radius: 100px;
+            color: #36e2ec;
+        }
+
+        nav li {
+            padding: 0 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #36e2ec;
+        }
+
+        nav form {
+            display: flex;
+            background-color: #36e2ec;
+            border-radius: 10px;
+        }
+
+        nav input {
+            padding: 5px;
+        }
+
+        nav button {
+            padding: 5px 10px;
+            background-color: #111727;
+            border: none;
+            color: #36e2ec;
+            cursor: pointer;
+            border: 3px solid #36e2ec;
+        }
+
+        nav .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid #36e2ec;
+        }
+
+        nav .auth a {
+            color: #36e2ec;
+            text-decoration: none;
+            margin-left: 10px;
+            padding: 15px;
+        }
+
+        .edit-profile {
+            margin-left: 400px;
+            border: 3px solid #36e2ec;
+            width: 400px;
+            height: 500px;
+            background-color: #090f1f;
+        }
+
+        .edit-profile input {
+            border: 2px solid #fff;
+            background-color: transparent;
+            width: 80%;
+            height: 45px;
+            border-radius: 15px;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+    <title>User Profile</title>
+</head>
+
+<body>
+    <div class="user-profile">
+        <nav>
+            <ul>
+                <li class="brand"><img src="logo.png" alt="Musicverse" /> Musicverse</li>
+                <li><a href="index.html" class="btn3" style="color: #36e2ec;">Home</a></li>
+                <li><a href="playlist.html" class="btn3" style="color: #36e2ec;">Playlist</a></li>
+                <li><a href="list_artis.html" class="btn3" style="color: #36e2ec;">Artist List</a></li>
+                <li>
+
+                    <form action="#" method="get">
+                        <input type="text" placeholder="Find Your Music Here" name="search">
+                        <button type="submit">Search</button>
+                    </form>
+                </li>
+
+                <li class="profile">
+                    <a href="user.html">
+                        <img src="user.png" alt="User profile">
+                </li>
+                </a>
+
+                <li class="auth">
+                    <a href="#">Contact Us</a>
+                </li>
+
+            </ul>
+        </nav>
+        <div class="profile-container">
+            <img src="user.png" alt="Profile Picture" class="profile-picture">
+            <br>
+            <strong>
+                <p style="color: #fff; font-size: x-large;">Welcome To Musicverse Ucok!</p>
+            </strong>
+            <br>
+            <div class="user-details">
+                <p id="displayUsername"><i class="fas fa-user"></i><strong>Usename :</strong> Sigit Rendang</p>
+                <br>
+                <p id="displayEmail"><i class="fas fa-envelope"></i><strong>User E-mail :</strong>tempegoreng45@gmail.com
+                </p>
+                <br>
+                <p id="displayId"><i class="fas fa-id-card"></i><strong>User ID :</strong>sigitrendang</p>
+                <br>
+                <p id="displayCountry"><i class="fas fa-globe"></i><strong>User Country :</strong> Indonesian</p>
+            </div>
+            <div class="edit-profile" style="display: none;">
+                <h2>Edit Profile</h2>
+                <form id="editForm">
+                    <label for="newUsername">New Username:</label>
+                    <input type="text" id="newUsername" name="newUsername"><br><br>
+                    <label for="newEmail">New Email:</label>
+                    <input type="email" id="newEmail" name="newEmail"><br><br>
+                    <label for="newId">New Id:</label><br>
+                    <input type="text" id="newId" name="newId"><br><br>
+                    <label for="newCountry">New Country:</label>
+                    <input type="type" id="newCountry" name="newCountry"><br><br><br>
+                    <button type="button" onclick="saveChanges()" style="margin-right: 20px;">Save Changes</button>
+                    <button type="button" onclick="cancelEdit()">Cancel</button>
+                </form>
+            </div>
+
+            <div class="button-container">
+                <button onclick="showEditForm()" style="font-size: large;"><b>Edit Profile</b></button>
+                <button onclick="logout()" style="font-size: large;"><b>Logout</b></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "login.html";
+        }
+
+        function goToHome() {
+            window.location.href = "index.html";
+        }
+        function showEditForm() {
+            document.querySelector('.edit-profile').style.display = 'block';
+            document.getElementById('newUsername').value = 'Sigit Rendang';
+            document.getElementById('newEmail').value = 'tempegoreng45@gmail.com';
+            document.getElementById('newId').value = 'sigitrendang';
+            document.getElementById('newCountry').value = 'Indonesian';
+        }
+
+        function saveChanges() {
+            var newUsername = document.getElementById("newUsername").value;
+            var newEmail = document.getElementById("newEmail").value;
+            var newId = document.getElementById("newId").value;
+            var newCountry = document.getElementById("newCountry").value;
+
+            document.getElementById("displayUsername").innerHTML = '<i class="fas fa-user"></i><strong>Usename :</strong> ' + newUsername;
+            document.getElementById("displayEmail").innerHTML = '<i class="fas fa-envelope"></i><strong>User E-mail :</strong> ' + newEmail;
+            document.getElementById("displayId").innerHTML = '<i class="fas fa-id-card"></i><strong>User ID :</strong> ' + newId;
+            document.getElementById("displayCountry").innerHTML = '<i class="fas fa-globe"></i><strong>User Country :</strong> ' + newCountry;
+
+            document.querySelector(".edit-profile").style.display = "none";
+            document.querySelector(".user-details").style.display = "block";
+        }
+
+        function cancelEdit() {
+            document.querySelector('.edit-profile').style.display = 'none';
+        }
+
+    </script>
+</body>
+
+</html>

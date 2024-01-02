@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+body {
+  background-color: #111727;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  font-family: "Ubuntu", sans-serif;
+  padding: 10px 20px;
+}
+
+nav ul {
+  list-style: none;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  height: 65px;
+  background-color: #090f1f;
+  border: 3px solid #36e2ec;
+  border-radius: 100px;
+  color: #36e2ec;
+}
+
+nav li {
+  padding: 0 10px;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav form {
+  display: flex;
+  background-color: #36e2ec;
+  border-radius: 10px;
+}
+
+nav input {
+  padding: 5px;
+}
+
+nav button {
+  padding: 5px 10px;
+  background-color: #111727;
+  border: none;
+  color: #36e2ec;
+  cursor: pointer;
+  border: 3px solid #36e2ec;
+}
+
+nav .profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #36e2ec;
+}
+
+nav .auth a {
+  color: #36e2ec;
+  text-decoration: none;
+  margin-left: 10px;
+  padding: 15px;
+}
+
+.brand img {
+  width: 80px;
+  padding: 0 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  font-size: 1.3rem;
+  color: #36e2ec;
+}
+
+
+.container {
+  min-height: 72vh;
+  background-image: url(bg.jpg);
+  color: #36e2ec;
+  border: 3px solid#36e2ec;
+  font-family: "Varela Round", sans-serif;
+  display: flex;
+  margin: 23px auto;
+  width: 85%;
+  border-radius: 30px;
+  padding: 34px;
+  background-image: url("bg.jpg");
+  background-size: cover;
+}
+
+.disk{
+  position: absolute;
+  display: block;
+  margin: 40px auto;
+  width: 350px;
+  height: 350px;
+  right: 200px;
+  top: 360px;
+  border-radius: 50%;
+  background-image: url('gambar_1.png');
+  background-size: cover;
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.08);
+  animation: rotate 20s linear infinite;
+  animation-play-state: paused;
+}
+
+.disk.play{
+  animation-play-state: running;
+}
+
+.disk::before{
+  content:'';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: black;
+}
+
+@keyframes rotate{
+  0%{
+      transform: rotate(0);
+  }
+  100%{
+      transform: rotate(360deg);
+  }
+}
+
+.bottom {
+  position: sticky;
+  bottom: 0;
+  height: 80px;
+  padding: 10px;
+  background-color: #090f1f;
+  color: #36e2ec;
+  border: 3px solid #36e2ec;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icons {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+}
+.icons i {
+  cursor: pointer;
+}
+
+#myProgressBar {
+  width: 80vw;
+  cursor: pointer;
+}
+
+.songItemContainer {
+  margin-top: 74px;
+}
+
+.songItem {
+  height: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111727;
+  border: 3px solid #36e2ec;
+  color: #36e2ec;
+  margin: 12px 0;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 34px;
+  cursor: pointer;
+}
+
+.songItem img {
+  width: 43px;
+  margin: 0 23px;
+  border-radius: 34px;
+  color: #36e2ec;
+}
+
+.timestamp {
+  margin: 0 23px;
+  color: #36e2ec;
+}
+
+.timestamp i {
+  cursor: pointer;
+}
+
+.songInfo {
+  position: absolute;
+  left: 10vw;
+  font-family: "Varela Round", sans-serif;
+  color: #36e2ec;
+}
+
+.songInfo img {
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+}
+
+#shuffle{
+font-size: 30px;
+}
+
+#repeat{
+  font-size: 27px;
+}
+#btn-share{
+  height: 30px;
+}
+#mute{
+  font-size: 20px;
+}
+#previous {
+  font-size: 30px;
+}
+#masterPlay{
+  font-size: 40px;
+}
+#next{
+  font-size: 30px;
+}

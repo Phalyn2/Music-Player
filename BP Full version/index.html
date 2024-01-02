@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Musicverse - Your favourite music is here</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="logo.png" />
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li class="brand"><img src="logo.png" alt="Musicverse" /> Musicverse</li>
+      <li><a href="index.html" style="color: #36e2ec;">Home</a></li>
+      <li><a href="playlist.html" style="color: #36e2ec;">Playlist</a></li>
+      <li><a href="list_artis.html" style="color: #36e2ec;">Artist List</a></li>
+
+      <li>
+        <form action="#" method="get">
+          <input type="text" oninput="cari_lagu()" placeholder="Find Your Music Here" id="kotak-cari" name="search">
+          <button type="submit" onclick="cari_lagu()">Search</button>
+        </form>
+      </li>
+      <li class="profile">
+        <a href="user.html">
+          <img src="user.png" alt="User profile">
+        </a>
+      </li>
+      <li class="auth">
+        <a href="opening.html">Log Out</a> | <a href="contact-us.html">Contact Us</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="songList">
+      <h1>Latest Favorite Song</h1>
+
+      <div class="songItemContainer" id="songItemContainer">
+      </div>
+      <div class="disk play"></div>
+    </div>
+  </div>
+  <div class="songItem2"></div>
+  <div class="songBanner"></div>
+  </div>
+  <div class="bottom">
+    <input type="range" name="range" id="myProgressBar" min="0" value="0" max="1000" />
+    <div class="icons">
+      <i class="fas fa-random" style="padding-right: 20px;" id="shuffle"></i>
+      <img src="share.png" style="padding-right: 20px;" id="btn-share">
+      <i class="fas fa-3x fa-step-backward" id="previous" style="padding-right: 10px;"></i>
+      <i class="far fa-3x fa-play-circle" id="masterPlay"></i>
+      <i class="fas fa-3x fa-step-forward" id="next" style="padding-right: 10px; padding-left: 10px;"></i>
+      <input type="range" name="volume" id="volumeSlider" min="0" max="100" value="100" />
+      <i class="fas fa-volume-up" id="mute" style="padding-left: 5px;"></i>
+      <i class="fas fa-redo" style="padding-left: 20px;" id="repeat"></i>
+    </div>
+    <div class="songInfo">
+      <img src="playing.gif" width="42px" alt="" id="gif" />
+      <span id="masterSongName">Payphone - Maroon 5</span>
+      <span id="duration">00:00</span>
+    </div>
+  </div>
+  <script src="main.js"></script>
+  <script src="https://kit.fontawesome.com/26504e4a1f.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

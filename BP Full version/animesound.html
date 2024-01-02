@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Soundtrack</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="logo.png" />
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li class="brand"><img src="logo.png" alt="Musicverse" /> Musicverse</li>
+      <li><a href="index.html" class="btn3" style="color: #36e2ec;">Home</a></li>
+      <li><a href="playlist.html" class="btn3" style="color: #36e2ec;">Playlist</a></li>
+      <li><a href="list artis.html" class="btn3" style="color: #36e2ec;">Artist List</a></li>
+      <li>
+
+        <form action="#" method="get">
+          <input type="text"  oninput="cari_lagu()" placeholder="Find Your Music Here"  id="kotak-cari" name="search">
+          <button type="submit" onclick="cari_lagu()">Search</button>
+        </form>
+      </li>
+
+      <li class="profile">
+        <a href="#">
+          <img src="user.png" alt="User profile">
+      </li>
+      </a>
+
+      <li class="auth">
+       <a href="opening.html">Log Out</a> | <a href="contact-us.html">Contact Us</a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="songList">
+      <h1>Anime Soundtrack</h1>
+      <div class="songItemContainer" id="songItemContainer">
+        <div class="songItem">
+          <img src="silhoutte.jpg" />
+          <span class="songName">Kanaboon - Silhoutte</span>
+          <span class="songlistplay"><span class="timestamp">03:58
+              <i id="0" class="far songItemPlay fa-play-circle" style="padding-left: 10px;"></i> </span></span>
+        </div>
+        <div class="songItem">
+          <img src="kanashimi.jpg" />
+          <span class="songName">Little By Litlle - Kanashimi Wo Yasashisa Ni</span>
+          <span class="songlistplay"><span class="timestamp">04:12
+              <i id="0" class="far songItemPlay fa-play-circle" style="padding-left: 10px;"></i> </span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="copyright">
+      <img src="logo.png" alt="Copyright Logo" />
+      <span>&copy; 2023 Musicverse. All rights reserved.</span>
+    </div>
+    <div class="developer-info">
+      <span>This website was developed by Group 5</span>
+      <span>Version 1.0</span>
+    </div>
+  </footer>
+
+  <div class="songItem2">
+
+  </div>
+  <div class="songBanner"></div>
+  </div>
+
+  <div class="bottom">
+    <input type="range" name="range" id="myProgressBar" min="0" value="0" max="1000" />
+    <div class="icons">
+      <i class="fas fa-random" style="padding-right: 20px;" id="shuffle"></i>
+      <img src="share.png" style="padding-right: 20px;" id="btn-share">
+      <i class="fas fa-3x fa-step-backward" id="previous" style="padding-right: 10px;"></i>
+      <i class="far fa-3x fa-play-circle" id="masterPlay"></i>
+      <i class="fas fa-3x fa-step-forward" id="next" style="padding-right: 10px; padding-left: 10px;"></i>
+      <input type="range" name="volume" id="volumeSlider" min="0" max="100" value="100" />
+      <i class="fas fa-volume-up" id="mute" style="padding-left: 5px;"></i>
+      <i class="fas fa-redo" style="padding-left: 20px;" id="repeat"></i>
+    </div>
+    <div class="songInfo">
+      <img src="playing.gif" width="42px" alt="" id="gif" />
+      <span id="masterSongName">Maroon 5 - Payphone</span>
+      <span id="duration">0:00</span>
+    </div>
+  </div>
+
+  <script>
+    let songIndex = 0;
+    let audioElement = new Audio();
+    let masterPlay = document.getElementById("masterPlay");
+    let myProgressBar = document.getElementById("myProgressBar");
+    let gif = document.getElementById("gif");
+    let masterSongName = document.getElementById("masterSongName");
+    let songItems = Array.from(document.getElementsByClassName("songItem"));
+    let nextButton = document.getElementById("next");
+    let prevButton = document.getElementById("previous");
+    let btn_random_reapeat = "sequential";
+    let isShuffle = false;
+    let isRepeat = false;
+    let isLoop = false;
+    let cari = ''
+
+    let songs = [
+      {
+        songName: "Kanaboon - Silhoutte",
+        filePath: "music/silhoutte.mp3",
+        coverPath: "silhoutte.jpg",
+        urlShare: "https://youtu.be/KRaWnd3LJfs?si=_MAsWvgMrpKqrFNq",
+        timestamp: '03:58'
+      },
+      {
+        songName: "Little By Litlle - Kanashimi Wo Yasashisa Ni",
+        filePath: "music/kanashimi.mp3",
+        coverPath: "kanashimi.jpg",
+        urlShare: "https://youtu.be/KRaWnd3LJfs?si=_MAsWvgMrpKqrFNq",
+        timestamp: '04:12'
+      },
+    ];
+
+    const updateSongUI = () => {
+      masterSongName.innerText = songs[songIndex].songName;
+      myProgressBar.value = 0;
+      audioElement.src = songs[songIndex].filePath;
+    };
+
+    const playSong = () => {
+      audioElement.play();
+      masterPlay.classList.remove("fa-play-circle");
+      masterPlay.classList.add("fa-pause-circle");
+      gif.style.opacity = 1;
+    };
+
+    const pauseSong = () => {
+      audioElement.pause();
+      masterPlay.classList.remove("fa-pause-circle");
+      masterPlay.classList.add("fa-play-circle");
+      gif.style.opacity = 0;
+    };
+
+    const playNextSong = () => {
+      if (isShuffle) {
+        songIndex = Math.floor(Math.random() * songs.length);
+      } else songIndex = (songIndex + 1) % songs.length;
+
+      updateSongUI();
+      playSong();
+    };
+
+    const playPrevSong = () => {
+      if (isShuffle) {
+        songIndex = Math.floor(Math.random() * songs.length);
+      } else songIndex = (songIndex - 1 + songs.length) % songs.length;
+
+      updateSongUI();
+      playSong();
+    };
+
+    const playSpecificSong = (index) => {
+      songIndex = index;
+      updateSongUI();
+      playSong();
+    };
+
+    masterPlay.addEventListener("click", () => {
+      if (audioElement.paused || audioElement.currentTime <= 0) {
+        playSong();
+      } else {
+        pauseSong();
+      }
+    });
+
+    audioElement.addEventListener("timeupdate", () => {
+      const progress = (audioElement.currentTime / audioElement.duration) * 1000;
+      myProgressBar.value = progress;
+
+      const currentMinutes = Math.floor(audioElement.currentTime / 60);
+      const currentSeconds = Math.floor(audioElement.currentTime % 60);
+      const durationElement = document.getElementById("duration");
+      durationElement.innerText = `${currentMinutes}:${currentSeconds}`;
+    });
+
+    myProgressBar.addEventListener("input", () => {
+      const seekTime = (myProgressBar.value / 1000) * audioElement.duration;
+      audioElement.currentTime = seekTime;
+    });
+
+    nextButton.addEventListener("click", () => {
+      playNextSong();
+    });
+
+    prevButton.addEventListener("click", () => {
+      playPrevSong();
+    });
+
+    songItems.forEach((element, index) => {
+      element.addEventListener("click", () => {
+        playSpecificSong(index);
+      });
+    });
+
+    const volumeSlider = document.getElementById("volumeSlider");
+    const muteButton = document.getElementById("mute");
+
+    volumeSlider.addEventListener("input", () => {
+      audioElement.volume = volumeSlider.value / 100;
+    });
+
+    muteButton.addEventListener("click", () => {
+      if (audioElement.muted) {
+        audioElement.muted = false;
+        muteButton.classList.remove("fa-volume-mute");
+        muteButton.classList.add("fa-volume-up");
+      } else {
+        audioElement.muted = true;
+        muteButton.classList.remove("fa-volume-up");
+        muteButton.classList.add("fa-volume-mute");
+      }
+    });
+
+    updateSongUI();
+    playSong();
+
+    audioElement.addEventListener("ended", () => {
+      if (isRepeat) {
+        updateSongUI();
+        playSong();
+        return;
+      }
+
+      playNextSong();
+    });
+
+    document.getElementById("shuffle").addEventListener("click", () => {
+      if (isShuffle) {
+        document.getElementById("shuffle").style.color = "#36e2ec";
+      } else {
+        playNextSong();
+        document.getElementById("shuffle").style.color = "blue";
+      }
+      isShuffle = !isShuffle;
+    });
+
+    document.getElementById("repeat").addEventListener("click", () => {
+      if (isRepeat) {
+        document.getElementById("repeat").style.color = "#36e2ec";
+      } else {
+        document.getElementById("repeat").style.color = "blue";
+      }
+      isRepeat = !isRepeat;
+    });
+
+    document.getElementById("btn-share").addEventListener("click", () => {
+      alert("Share keteman");
+      window.location.href = "whatsapp://send?text=" + songs[songIndex]["urlShare"];
+    });
+
+    function tampilkan_lagu() {
+  let semua_lagu_html = ''
+  for (let i = 0; i < songs.length; i++) {
+    let lagu = songs[i]
+    let judul_lagu = lagu.songName.toLowerCase()
+    if(!judul_lagu.includes(cari.toLocaleLowerCase())) {
+      continue
+    }
+
+    semua_lagu_html += `
+    <div class="songItem" onclick="playSpecificSong(${i})">
+      <img src="${lagu.coverPath}" />
+      <span class="songName">${lagu.songName}</span>
+      <span class="songlistplay"><span class="timestamp">${lagu.timestamp}
+          <i id="${i}" class="far songItemPlay fa-play-circle"></i> </span></span>
+    </div>
+    `
+  }
+
+  document.getElementById('songItemContainer').innerHTML = semua_lagu_html
+}
+tampilkan_lagu()
+
+function cari_lagu() {
+  cari = document.getElementById('kotak-cari').value
+  tampilkan_lagu()
+}
+
+  </script>
+  <script src="https://kit.fontawesome.com/26504e4a1f.js" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-d4eTzwf0i6Ia3bq2TxyaMI5Eh2S8a1Od3IYdVgKo+MNlOHn4P/DmGt+f9wqBDM6lK/U2ZR+bCyS96hNn5xhGvw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/x-icon" href="logo.png" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 2vh;
+      color: #36e2ec;
+      font-family: "Ubuntu", sans-serif;
+      background-image: url(loginbg.jpg);
+      background-size: cover;
+    }
+
+    .login-container {
+      text-align: center;
+    }
+
+    .login-box {
+      background-color: transparent;
+      padding: 20px;
+      border-radius: 8px;
+      border: 3px solid #36e2ec;
+      height: 600px;
+      width: 500px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-icon {
+      position: relative;
+      margin: 25px 0;
+    }
+
+    .input-icon input {
+      width: 100%;
+      height: 50px;
+      background: transparent;
+      border: 2px solid #0ef;
+      outline: none;
+      border-radius: 15px;
+      font-size: 1em;
+      color: #fff;
+      padding: 20px;
+      padding-top: 20px;
+    }
+
+    .input-icon ::placeholder {
+      color: #fff;
+      font-size: large;
+    }
+
+    input,
+    button {
+      width: 40%;
+      margin: 10px 0;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: transparent;
+      color: #36e2ec;
+      border: 2px solid #36e2ec;
+      border-radius: 8px;
+    }
+
+    button:hover {
+      background-color: #110;
+    }
+
+    .forgot-pass {
+      margin: -15px 0 10px;
+      text-align: center;
+    }
+
+    .forgot-pass a {
+      font-size: 17px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .forgot-pass a:hover {
+      text-decoration: underline;
+    }
+
+    .error-message {
+      color: red;
+    }
+  </style>
+  <title>Welcome To Musicverse!</title>
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>Welcome To Musicverse!</h2>
+      <img src="logo.png" style="height: 150px; width: 150px;">
+
+      <div class="input-icon">
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" placeholder="Username">
+      </div>
+      <div class="input-icon">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Password">
+      </div>
+
+      <div id="errorMessage" class="error-message"></div><br>
+
+      <div class="forgot-pass">
+        <a href="reset_password.html">Lupa Kata sandi?</a>
+      </div><br>
+
+      <form id="loginForm" onsubmit="checkLogin(event)">
+        <button type="submit" style="font-size: 4vh;"><b>Login</b></button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function loginWithFacebook() {
+
+      window.location.href = 'https://m.facebook.com/login/?locale=id_ID&refsrc=deprecated';
+    }
+
+    function loginWithGoogle() {
+
+      window.location.href = 'https://accounts.google.com/signin';
+    }
+
+    function checkLogin(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('errorMessage');
+
+      const correctUsername = 'sigitrendang';
+      const correctPassword = '177013';
+      const storedPassword = localStorage.getItem('userPassword');
+
+      if (username === correctUsername && (password === correctPassword || password === storedPassword)) {
+        document.getElementById('loginForm').style.borderColor = 'green';
+        errorMessage.textContent = '';
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('loginForm').style.borderColor = 'red';
+        errorMessage.textContent = 'Username dan password salah. Silahkan coba lagi!';
+      }
+    }
+
+  </script>
+</body>
+
+</html>
